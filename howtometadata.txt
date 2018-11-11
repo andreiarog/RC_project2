@@ -1,0 +1,28 @@
+In terminal:
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get -y build-dep libcurl4-gnutls-dev
+sudo apt-get -y install libcurl4-gnutls-dev
+sudo apt-get -y install libssl-dev
+
+In R studio:
+install.packages("devtools")
+library("devtools")
+install_github("yunshiuan/label4MRI",subdir = "label4MRI")
+library(mni2aal)
+mni_to_region_name(20,-15,-18)
+Coactivation_matrix <- read.csv("~/Documents/MEIC/Redes/RC_project2/Coactivation_matrix.mat", header=FALSE, comment.char="#")
+View(Coactivation_matrix)
+install.packages("R.matlab")
+library(R.matlab)
+Coactivation_matrix <- readMat("/home/andreia/Documents/MEIC/Redes/RC_project2/Coactivation_matrix.mat")
+View(Coactivation_matrix)
+Coactivation_matrix[["Coord"]]
+Coactivation_matrix[["Coord"]]$1
+Coactivation_matrix[["Coord"]][,1]
+dta <- data.frame(x=Coactivation_matrix[["Coord"]][,1], y=Coactivation_matrix[["Coord"]][,2], z=Coactivation_matrix[["Coord"]][,3])
+View(dta)
+Result=t(mapply(FUN=mni_to_region_name,x=dta$x,y=dta$y,z=dta$z))
+View(Result)
+Result[638]
+Result[616]
