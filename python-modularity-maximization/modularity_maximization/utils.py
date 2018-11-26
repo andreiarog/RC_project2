@@ -86,7 +86,7 @@ def get_modularity(network, community_dict):
     #network[edge[0]][edge[1]]['weight'] instead of 1
     nx.set_edge_attributes(G, {e:G[e[0]][e[1]]['weight'] for e in G.edges}, 'weight')
     A = nx.to_scipy_sparse_matrix(G).astype(float)
-    weightedDegree = np.zeros(G-.number_of_nodes())
+    weightedDegree = np.zeros(G.number_of_nodes())
     nodes = list(G)
 
     if type(G) == nx.Graph:
